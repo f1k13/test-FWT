@@ -3,10 +3,16 @@ html[data-theme="dark"] {
   --border-color: #fff;
   --text-color: #fff;
   --text-input: #555555;
+  --item-background-color: #fff;
+  --item-text-color: #000000;
+
+
 }
 html[data-theme="light"] {
   --main-background-color: #fff;
   --border-color: #000;
   --text-color: #000;
   --text-input: #bdbdbd;
+  --item-background-color: #000000;
+  --item-text-color: #ffff;
 }

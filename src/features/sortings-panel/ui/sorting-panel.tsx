@@ -9,16 +9,21 @@ const SortingPanel = () => {
   const options = [
     { id: "1", name: "1" },
     { id: "2", name: "2" },
+    { id: "1", name: "1" },
+    { id: "2", name: "2" },
   ];
+
+  const dispatch = UseAppDispatch();
 
   const { author, location, created } = useSelector(
     (state: RootState) => state.sort
   );
-  const [isOpenAuthor, setIsOpenAuthor] = useState(false);
 
-  const [isOpenLocation, setIsOpenLocation] = useState(false);
-  const dispatch = UseAppDispatch();
-  const [isOpenCreated, setIsOpenCreated] = useState(false);
+  const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);
+
+  const [isOpenLocation, setIsOpenLocation] = useState<boolean>(false);
+
+  const [isOpenCreated, setIsOpenCreated] = useState<boolean>(false);
 
   const handleChange = (value: string, select: string) => {
     if (select === "Author") {
