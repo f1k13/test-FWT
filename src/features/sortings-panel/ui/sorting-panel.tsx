@@ -1,0 +1,61 @@
+import Select from "@/shared/ui/select/select";
+import styles from "../../../widgets/sortings/styles/sortings.module.scss";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState, UseAppDispatch } from "@/entities/redux/store";
+import { setAuthor, setCreated, setLocation } from "../lib/slices/sort-slice";
+
+const SortingPanel = () => {
+  const options = [
+    { id: "1", name: "1" },
+    { id: "2", name: "2" },
+  ];
+
+  const { author, location, created } = useSelector(
+    (state: RootState) => state.sort
+  );
+  const [isOpenAuthor, setIsOpenAuthor] = useState(false);
+
+  const [isOpenLocation, setIsOpenLocation] = useState(false);
+  const dispatch = UseAppDispatch();
+  const [isOpenCreated, setIsOpenCreated] = useState(false);
+
+  const handleChange = (value: string, select: string) => {
+    if (select === "Author") {
+      dispatch(setAuthor(value));
+    } else if (select === "Location") {
+      dispatch(setLocation(value));
+    } else if (select === "Created") {
+      dispatch(setCreated(value));
+    }
+  };
+
+  return (
+    <div className={styles.line}>
+      <input className={styles.input} type="text" placeholder="Name" />
+      <Select
+        select={author}
+        options={options}
+        isOpen={isOpenAuthor}
+        onChange={(value) => handleChange(value, "Author")}
+        setIsOpen={setIsOpenAuthor}
+      />
+      <Select
+        select={location}
+        options={options}
+        isOpen={isOpenLocation}
+        onChange={(value) => handleChange(value, "Location")}
+        setIsOpen={setIsOpenLocation}
+      />
+      <Select
+        select={created}
+        options={options}
+        isOpen={isOpenCreated}
+        onChange={(value) => handleChange(value, "Created")}
+        setIsOpen={setIsOpenCreated}
+      />
+    </div>
+  );
+};
+
+export default SortingPanel;
