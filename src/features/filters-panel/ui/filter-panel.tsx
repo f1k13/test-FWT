@@ -1,9 +1,13 @@
 import Select from "@/shared/ui/select/select";
-import styles from "../../../widgets/sortings/styles/sortings.module.scss";
+import styles from "../../../widgets/filters/styles/filters.module.scss";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, UseAppDispatch } from "@/entities/redux/store";
-import { setAuthor, setCreated, setLocation } from "../lib/slices/sort-slice";
+import {
+  setAuthor,
+  setCreated,
+  setLocation,
+} from "../lib/slices/filters-slice";
 
 const SortingPanel = () => {
   const options = [
@@ -16,7 +20,7 @@ const SortingPanel = () => {
   const dispatch = UseAppDispatch();
 
   const { author, location, created } = useSelector(
-    (state: RootState) => state.sort
+    (state: RootState) => state.filter
   );
 
   const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);

@@ -1,10 +1,10 @@
+import { Filters } from "@/widgets/filters/ui";
 
-import { Sortings } from "@/widgets/sortings/ui";
 
 const HomePage = () => {
   return (
     <div>
-      <Sortings />
+      <Filters />
     </div>
   );
 };

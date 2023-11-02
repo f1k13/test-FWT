@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { SelectArrowIcon } from "../icons";
 import styles from "./styles/select.module.scss";
 
@@ -18,8 +19,25 @@ const Select = ({
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
 }) => {
+  const sortRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const clickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", clickOutside);
+
+    return () => {
+      document.removeEventListener("click", clickOutside);
+    };
+  }, []);
+
   return (
     <div
+      ref={sortRef}
       onClick={() => setIsOpen(!isOpen)}
       className={isOpen === true ? styles.isActive : styles.isNotActive}
     >
