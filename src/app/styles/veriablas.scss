@@ -6,6 +6,7 @@ html[data-theme="dark"] {
   --item-background-color: #fff;
   --item-text-color: #000000;
   --border-color: #c6c6c6;
+  --input-background-color: #fff;
 }
 html[data-theme="light"] {
   --main-background-color: #fff;
@@ -15,4 +16,5 @@ html[data-theme="light"] {
   --item-background-color: #000000;
   --item-text-color: #ffff;
   --border-color: #555555;
+  --input-background-color: #efefef;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { SelectArrowIcon } from "../icons";
 import styles from "./styles/select.module.scss";
+import clsx from "clsx";
 
 type options = {
   id: number;
@@ -15,12 +16,13 @@ const Select = ({
   setIsOpen,
 }: {
   select: string;
-  options: options[];
+  options?: options[];
   onChange: (value: string) => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
 }) => {
   const sortRef = useRef<HTMLDivElement | null>(null);
+
 
   useEffect(() => {
     const clickOutside = (event: MouseEvent) => {
@@ -41,34 +43,59 @@ const Select = ({
   }
 
   return (
-    <div
-      ref={sortRef}
-      onClick={() => setIsOpen(!isOpen)}
-      className={isOpen === true ? styles.isActive : styles.isNotActive}
-    >
-      <div className={styles.select}>
-        <p className={styles.title}>{select}</p>
-        <div className={styles.icons}>
-          <SelectArrowIcon />
-        </div>
-      </div>
-      {isOpen && (
-        <ul
-          className={
-            isOpen === true ? styles.listIsActive : styles.listNotIsActive
-          }
+    <div className={styles.root}>
+      <div
+        ref={sortRef}
+        onClick={() => setIsOpen(!isOpen)}
+        className={clsx(
+          isOpen && styles.isActive,
+          !isOpen && styles.isNotActive,
+          !options && isOpen && styles.notListIsActive
+        )}
+      >
+        <div
+          className={clsx(styles.select, !options && styles.selectNotBorder)}
         >
-          {options.map((option) => (
-            <li
-              className={styles.item}
-              onClick={() => onChange(option.name || option.location)}
-              key={option.id}
-            >
-              {option.name || option.location}
-            </li>
-          ))}
-        </ul>
-      )}
+          <p className={styles.title}>{select}</p>
+          <div className={styles.icons}>
+            <SelectArrowIcon />
+          </div>
+        </div>
+        {isOpen && (
+          <ul
+            className={
+              isOpen === true ? styles.listIsActive : styles.listNotIsActive
+            }
+          >
+            {options?.map((option) => (
+              <li
+                className={styles.item}
+                onClick={() => onChange(option.name || option.location)}
+                key={option.id}
+              >
+                {option.name || option.location}
+              </li>
+            ))}
+          </ul>
+        )}
+        {!options && isOpen && (
+          <div className={styles.notList}>
+            <input
+              className={styles.notListInput}
+              onClick={(event) => event.stopPropagation()}
+              type="text"
+              placeholder="from"
+            />
+            <div className={styles.border}></div>
+            <input
+              className={styles.notListInput}
+              onClick={(event) => event.stopPropagation()}
+              type="text"
+              placeholder="before"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

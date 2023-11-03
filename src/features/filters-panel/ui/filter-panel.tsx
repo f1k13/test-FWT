@@ -12,34 +12,11 @@ import { fetchAuthors } from "../lib/service/authors-fetch";
 import { fetchLocation } from "../lib/service/location-fetch";
 
 const SortingPanel = () => {
-  const options = [
-    { id: "1", name: "1" },
-    { id: "2", name: "2" },
-    { id: "1", name: "1" },
-    { id: "2", name: "2" },
-  ];
-
-  const dispatch = UseAppDispatch();
-
-  const { author, location, created } = useSelector(
-    (state: RootState) => state.filter
-  );
-
   const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);
 
   const [isOpenLocation, setIsOpenLocation] = useState<boolean>(false);
 
   const [isOpenCreated, setIsOpenCreated] = useState<boolean>(false);
-
-  const handleChange = (value: string, select: string) => {
-    if (select === "Author") {
-      dispatch(setAuthor(value));
-    } else if (select === "Location") {
-      dispatch(setLocation(value));
-    } else if (select === "Created") {
-      dispatch(setCreated(value));
-    }
-  };
 
   useEffect(() => {
     dispatch(fetchAuthors());
@@ -52,9 +29,23 @@ const SortingPanel = () => {
 
   const { locationsItems } = useSelector((state: RootState) => state.location);
 
-  console.log(authrorsItems);
+  const dispatch = UseAppDispatch();
 
+  const { author, location, created } = useSelector(
+    (state: RootState) => state.filter
+  );
 
+  const handleChange = (value: string, select: string) => {
+    if (select === "Author") {
+      dispatch(setAuthor(value));
+    } else if (select === "Location") {
+      dispatch(setLocation(value));
+    } else if (select === "Created") {
+      dispatch(setCreated(value));
+    }
+  };
+
+  console.log(status);
 
   return (
     <div className={styles.line}>
@@ -75,7 +66,6 @@ const SortingPanel = () => {
       />
       <Select
         select={created}
-        options={options}
         isOpen={isOpenCreated}
         onChange={(value) => handleChange(value, "Created")}
         setIsOpen={setIsOpenCreated}

@@ -1,20 +1,24 @@
+.root {
+  width: 21%;
+  position: relative;
+}
+
 .isActive {
   background-color: transparent;
   border: 1px solid var(--border-color);
-  width: 20%;
+  width: 100%;
   height: 350px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
-  position: relative;
-  
+  position: absolute;
 }
 
 .isNotActive {
   background-color: transparent;
   border: 1px solid var(--border-color);
-  width: 20%;
+  width: 100%;
   height: 45px;
   border-radius: 8px;
   display: flex;
@@ -23,6 +27,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: absolute;
 }
 
 @keyframes fade-in {
@@ -60,7 +65,7 @@
   flex-direction: column;
   list-style: none;
   opacity: 1;
-  
+  background-color: var(--main-background-color);
 }
 .listIsActive::-webkit-scrollbar-thumb {
   height: 131px;
@@ -87,7 +92,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  
+
   width: 100%;
   background-color: var(--main-background-color);
   &:hover {
@@ -96,4 +101,35 @@
     color: var(--text-color);
     color: var(--item-text-color);
   }
+}
+.notListIsActive {
+  height: 130px;
+  background-color: var(--main-background-color);
+}
+
+.selectNotBorder {
+  border: none;
+}
+.notList {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.notListInput {
+  width: 95px;
+  height: 45px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  padding-left: 15px;
+  background-color: var(--input-background-color);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+.border {
+  background: var(--item-background-color);
+  width: 12px;
+  height: 1px;
+  margin: 0 6px;
 }
