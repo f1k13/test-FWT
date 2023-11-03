@@ -1,0 +1,32 @@
+.root {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 45px;
+}
+.item {
+  width: 420px;
+  height: 275px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+}
+.text {
+  background-color: rgba(255, 255, 255, 0.75);
+  width: 100%;
+  font-size: 18px;
+  font-style: normal;
+  padding: 5px 15px;
+  font-weight: 700;
+  line-height: 20px;
+  height: 30px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+}

@@ -45,7 +45,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .listIsActive {
@@ -60,13 +60,13 @@
 .listIsActive::-webkit-scrollbar-thumb {
   height: 131px;
   border-radius: 10px;
-  background: #7B7B7B;
+  background: #7b7b7b;
 }
 .listIsActive::-webkit-scrollbar {
   background-color: var(--main-background-color);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
   width: 9px;
-  margin-right: 10px
+  margin-right: 10px;
 }
 .listNotIsActive {
   opacity: 0;
