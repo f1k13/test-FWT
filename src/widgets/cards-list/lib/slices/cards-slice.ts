@@ -14,11 +14,7 @@ const initialState: CardsState = {
 export const cardsSlice = createSlice({
   name: "cards",
   initialState,
-  reducers: {
-    setItems: (state, action) => {
-      state.items = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(cardsFetch.pending, (state) => {
       state.status = "loading";

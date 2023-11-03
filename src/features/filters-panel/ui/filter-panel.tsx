@@ -1,6 +1,6 @@
 import Select from "@/shared/ui/select/select";
 import styles from "../../../widgets/filters/styles/filters.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, UseAppDispatch } from "@/entities/redux/store";
 import {
@@ -8,6 +8,8 @@ import {
   setCreated,
   setLocation,
 } from "../lib/slices/filters-slice";
+import { fetchAuthors } from "../lib/service/authors-fetch";
+import { fetchLocation } from "../lib/service/location-fetch";
 
 const SortingPanel = () => {
   const options = [
@@ -39,19 +41,34 @@ const SortingPanel = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(fetchAuthors());
+    dispatch(fetchLocation());
+  }, []);
+
+  const { authrorsItems, status } = useSelector(
+    (state: RootState) => state.authors
+  );
+
+  const { locationsItems } = useSelector((state: RootState) => state.location);
+
+  console.log(authrorsItems);
+
+
+
   return (
     <div className={styles.line}>
       <input className={styles.input} type="text" placeholder="Name" />
       <Select
         select={author}
-        options={options}
+        options={authrorsItems}
         isOpen={isOpenAuthor}
         onChange={(value) => handleChange(value, "Author")}
         setIsOpen={setIsOpenAuthor}
       />
       <Select
         select={location}
-        options={options}
+        options={locationsItems}
         isOpen={isOpenLocation}
         onChange={(value) => handleChange(value, "Location")}
         setIsOpen={setIsOpenLocation}

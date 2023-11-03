@@ -1,5 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export type FiltersType = {
+  id: number;
+  name: string;
+};
+
 type State = {
   author: string;
   location: string;

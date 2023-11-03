@@ -3,8 +3,9 @@ import { SelectArrowIcon } from "../icons";
 import styles from "./styles/select.module.scss";
 
 type options = {
-  id: string;
+  id: number;
   name: string;
+  location: string;
 };
 const Select = ({
   select,
@@ -35,6 +36,10 @@ const Select = ({
     };
   }, []);
 
+  if (select.length > 20) {
+    select = select.slice(0, 20) + "...";
+  }
+
   return (
     <div
       ref={sortRef}
@@ -56,10 +61,10 @@ const Select = ({
           {options.map((option) => (
             <li
               className={styles.item}
-              onClick={() => onChange(option.name)}
+              onClick={() => onChange(option.name || option.location)}
               key={option.id}
             >
-              {option.name}
+              {option.name || option.location}
             </li>
           ))}
         </ul>

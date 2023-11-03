@@ -12,11 +12,9 @@ const CardsList = () => {
     dispatch(cardsFetch());
   }, []);
 
-  const array = useSelector((state: RootState) => state.cards);
+  const { items, status } = useSelector((state: RootState) => state.cards);
 
-  const items = array.items.map((item) => item);
-
-  console.log(items);
+  console.log(status);
 
   return (
     <div className={styles.root}>

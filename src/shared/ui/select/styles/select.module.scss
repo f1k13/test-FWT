@@ -8,6 +8,7 @@
   flex-direction: column;
   transition: all 0.3s ease;
   position: relative;
+  
 }
 
 .isNotActive {
@@ -19,6 +20,9 @@
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @keyframes fade-in {
@@ -56,6 +60,7 @@
   flex-direction: column;
   list-style: none;
   opacity: 1;
+  
 }
 .listIsActive::-webkit-scrollbar-thumb {
   height: 131px;
@@ -76,9 +81,13 @@
 .item {
   color: var(--text-color);
   cursor: pointer;
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 10px 30px;
   list-style-type: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  
   width: 100%;
   background-color: var(--main-background-color);
   &:hover {
