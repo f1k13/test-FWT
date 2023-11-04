@@ -2,8 +2,9 @@ import { RootState, UseAppDispatch } from "@/entities/redux/store";
 import { useEffect } from "react";
 import { cardsFetch } from "../lib/service/cards-fetch";
 import { useSelector } from "react-redux";
-import CardItem from "./card-item";
+
 import styles from "./styles/cards.module.scss";
+import { CardItem } from "@/features/card-item/ui";
 
 const CardsList = () => {
   const dispatch = UseAppDispatch();
@@ -12,14 +13,12 @@ const CardsList = () => {
     dispatch(cardsFetch());
   }, []);
 
-  const { items, status } = useSelector((state: RootState) => state.cards);
-
-  console.log(status);
+  const { items } = useSelector((state: RootState) => state.cards);
 
   return (
     <div className={styles.root}>
       {items.map((item, index) => (
-        <CardItem item={item} index={index} key={index} />
+        <CardItem item={item} key={index} />
       ))}
     </div>
   );

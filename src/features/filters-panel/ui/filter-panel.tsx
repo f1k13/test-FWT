@@ -11,7 +11,9 @@ import {
 import { fetchAuthors } from "../lib/service/authors-fetch";
 import { fetchLocation } from "../lib/service/location-fetch";
 
+
 const SortingPanel = () => {
+
   const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);
 
   const [isOpenLocation, setIsOpenLocation] = useState<boolean>(false);
@@ -23,7 +25,7 @@ const SortingPanel = () => {
     dispatch(fetchLocation());
   }, []);
 
-  const { authrorsItems, status } = useSelector(
+  const { authrorsItems } = useSelector(
     (state: RootState) => state.authors
   );
 
@@ -44,8 +46,6 @@ const SortingPanel = () => {
       dispatch(setCreated(value));
     }
   };
-
-  console.log(status);
 
   return (
     <div className={styles.line}>

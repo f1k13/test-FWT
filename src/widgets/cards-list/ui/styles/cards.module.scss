@@ -8,25 +8,63 @@
 .item {
   width: 420px;
   height: 275px;
-  border-radius: 20px;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  &:hover {
+    .content {
+      height: 50%;
+      transition: height 0.3s linear;
+    }
+    .hover {
+      opacity: 1;
+      transition: opacity 0.3s linear;
+    }
+    .text {
+      margin-top: 20px;
+    }
+  }
 }
 .content {
   display: flex;
   justify-content: center;
-  align-items: end;
-  height: 100%;
-}
-.text {
-  background-color: rgba(255, 255, 255, 0.75);
+  flex-direction: column;
+  height: 10%;
   width: 100%;
-  font-size: 18px;
-  font-style: normal;
-  padding: 5px 15px;
-  font-weight: 700;
-  line-height: 20px;
-  height: 30px;
+  background-color: rgba(255, 255, 255, 0.75);
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  padding-left: 15px;
+  transition: height 0.3s linear;
+}
+.hover {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+.text {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 60px;
+}
 
+.textHoverTitle {
+  display: flex;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: black;
+}
+.textHoverSubTitle {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+  margin-left: 4px;
 }
