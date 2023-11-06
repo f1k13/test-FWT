@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   margin-top: 45px;
 }
+
 .item {
   width: 420px;
   height: 275px;
@@ -13,20 +14,26 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: end;
+  border-radius: 20px;
+
   &:hover {
     .content {
       height: 50%;
       transition: height 0.3s linear;
     }
+
     .hover {
       opacity: 1;
       transition: opacity 0.3s linear;
+      margin: 0;
     }
-    .text {
-      margin-top: 20px;
+
+    .text{
+      top: 10px;
     }
   }
 }
+
 .content {
   display: flex;
   justify-content: center;
@@ -38,19 +45,25 @@
   border-bottom-right-radius: 15px;
   padding-left: 15px;
   transition: height 0.3s linear;
+  position: relative;
 }
+
 .hover {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   opacity: 0;
+  margin-bottom: 80px;
   transition: opacity 0.3s linear;
 }
+
 .text {
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  margin-top: 60px;
+  position: absolute;
+  top: 0;
 }
 
 .textHoverTitle {
@@ -61,6 +74,7 @@
   line-height: 20px;
   color: black;
 }
+
 .textHoverSubTitle {
   font-size: 13px;
   font-style: normal;

@@ -13,6 +13,10 @@
   flex-direction: column;
   transition: all 0.3s ease;
   position: absolute;
+  z-index: 3;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
 }
 
 .isNotActive {
@@ -67,17 +71,20 @@
   opacity: 1;
   background-color: var(--main-background-color);
 }
+
 .listIsActive::-webkit-scrollbar-thumb {
   height: 131px;
   border-radius: 10px;
   background: #7b7b7b;
 }
+
 .listIsActive::-webkit-scrollbar {
   background-color: var(--main-background-color);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
   width: 9px;
-  margin-right: 10px;
+  position: absolute;
 }
+
 .listNotIsActive {
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -92,9 +99,9 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-
   width: 100%;
   background-color: var(--main-background-color);
+
   &:hover {
     background-color: var(--main-background-color);
     background-color: var(--item-background-color);
@@ -102,6 +109,7 @@
     color: var(--item-text-color);
   }
 }
+
 .notListIsActive {
   height: 130px;
   background-color: var(--main-background-color);
@@ -110,11 +118,13 @@
 .selectNotBorder {
   border: none;
 }
+
 .notList {
   display: flex;
   align-items: center;
   padding: 20px;
 }
+
 .notListInput {
   width: 95px;
   height: 45px;
@@ -127,9 +137,14 @@
   font-style: normal;
   font-weight: 400;
 }
+
 .border {
   background: var(--item-background-color);
   width: 12px;
   height: 1px;
-  margin: 0 6px;
+}
+
+.notListInput::-webkit-outer-spin-button,
+.notListInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }

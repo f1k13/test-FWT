@@ -1,6 +1,6 @@
+import { Paginate } from "@/shared/ui/pagination/ui";
 import { CardsList } from "@/widgets/cards-list/ui";
 import { Filters } from "@/widgets/filters/ui";
-
 
 const HomePage = () => {
 
@@ -8,6 +8,7 @@ const HomePage = () => {
     <div>
       <Filters />
       <CardsList />
+      <Paginate />
     </div>
   );
 };

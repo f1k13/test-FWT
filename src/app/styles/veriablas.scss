@@ -7,7 +7,9 @@ html[data-theme="dark"] {
   --item-text-color: #000000;
   --border-color: #c6c6c6;
   --input-background-color: #fff;
+  --hover-item-color: #464646;
 }
+
 html[data-theme="light"] {
   --main-background-color: #fff;
   --border-color: #000;
@@ -17,4 +19,5 @@ html[data-theme="light"] {
   --item-text-color: #ffff;
   --border-color: #555555;
   --input-background-color: #efefef;
+  --hover-item-color: #ededed;
 }

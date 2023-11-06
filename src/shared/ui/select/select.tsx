@@ -14,15 +14,22 @@ const Select = ({
   onChange,
   isOpen,
   setIsOpen,
+  valueInput,
+  onChangeInput,
+  valueInputSecond,
+  onChangeInputSecond,
 }: {
   select: string;
   options?: options[];
-  onChange: (value: string) => void;
+  onChange?: (value: string, id: number) => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  valueInput?: string;
+  onChangeInput?: (value: string) => void;
+  valueInputSecond?: string;
+  onChangeInputSecond?: (value: string) => void;
 }) => {
   const sortRef = useRef<HTMLDivElement | null>(null);
-
 
   useEffect(() => {
     const clickOutside = (event: MouseEvent) => {
@@ -42,6 +49,7 @@ const Select = ({
     select = select.slice(0, 20) + "...";
   }
 
+  
   return (
     <div className={styles.root}>
       <div
@@ -70,7 +78,9 @@ const Select = ({
             {options?.map((option) => (
               <li
                 className={styles.item}
-                onClick={() => onChange(option.name || option.location)}
+                onClick={() =>
+                  onChange?.(option.name || option.location, option.id)
+                }
                 key={option.id}
               >
                 {option.name || option.location}
@@ -83,14 +93,18 @@ const Select = ({
             <input
               className={styles.notListInput}
               onClick={(event) => event.stopPropagation()}
-              type="text"
+              value={valueInput}
+              onChange={(e) => onChangeInput?.(e.target.value)}
+              type="number"
               placeholder="from"
             />
             <div className={styles.border}></div>
             <input
-              className={styles.notListInput}
+              value={valueInputSecond}
+              onChange={(e) => onChangeInputSecond?.(e.target.value)}
               onClick={(event) => event.stopPropagation()}
-              type="text"
+              className={styles.notListInput}
+              type="number"
               placeholder="before"
             />
           </div>

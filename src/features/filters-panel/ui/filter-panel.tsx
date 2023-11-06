@@ -5,14 +5,21 @@ import { useSelector } from "react-redux";
 import { RootState, UseAppDispatch } from "@/entities/redux/store";
 import {
   setAuthor,
-  setCreated,
+  setCreatedBeforeValue,
+  setCreatedFromValue,
   setLocation,
+  setSearch,
 } from "../lib/slices/filters-slice";
 import { fetchAuthors } from "../lib/service/authors-fetch";
 import { fetchLocation } from "../lib/service/location-fetch";
 
-
 const SortingPanel = () => {
+
+  const [firstValue, setFirstValue] = useState<string>("");
+
+  const [secondValue, setSecondValue] = useState<string>("");
+
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);
 
@@ -24,50 +31,59 @@ const SortingPanel = () => {
     dispatch(fetchAuthors());
     dispatch(fetchLocation());
   }, []);
+  
 
-  const { authrorsItems } = useSelector(
-    (state: RootState) => state.authors
-  );
+  useEffect(() => {
+    dispatch(setCreatedFromValue(firstValue));
+    dispatch(setCreatedBeforeValue(secondValue));
+    dispatch(setSearch(searchValue));
+  }, [firstValue, secondValue, searchValue]);
+
+  const { authrorsItems } = useSelector((state: RootState) => state.authors);
 
   const { locationsItems } = useSelector((state: RootState) => state.location);
 
+  const { author, location } = useSelector((state: RootState) => state.filter);
+
   const dispatch = UseAppDispatch();
 
-  const { author, location, created } = useSelector(
-    (state: RootState) => state.filter
-  );
-
-  const handleChange = (value: string, select: string) => {
+  const handleChange = (value: string, select: string, id: number) => {
     if (select === "Author") {
-      dispatch(setAuthor(value));
+      dispatch(setAuthor({ id, name: value }));
     } else if (select === "Location") {
-      dispatch(setLocation(value));
-    } else if (select === "Created") {
-      dispatch(setCreated(value));
+      dispatch(setLocation({ id, location: value }));
     }
   };
-
   return (
     <div className={styles.line}>
-      <input className={styles.input} type="text" placeholder="Name" />
+      <input
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        className={styles.input}
+        type="text"
+        placeholder="Name"
+      />
       <Select
         select={author}
         options={authrorsItems}
         isOpen={isOpenAuthor}
-        onChange={(value) => handleChange(value, "Author")}
+        onChange={(value, id) => handleChange(value, "Author", id)}
         setIsOpen={setIsOpenAuthor}
       />
       <Select
         select={location}
         options={locationsItems}
         isOpen={isOpenLocation}
-        onChange={(value) => handleChange(value, "Location")}
+        onChange={(value, id) => handleChange(value, "Location", id)}
         setIsOpen={setIsOpenLocation}
       />
       <Select
-        select={created}
+        select={"Created"}
+        valueInput={firstValue}
+        onChangeInput={setFirstValue}
+        valueInputSecond={secondValue}
+        onChangeInputSecond={setSecondValue}
         isOpen={isOpenCreated}
-        onChange={(value) => handleChange(value, "Created")}
         setIsOpen={setIsOpenCreated}
       />
     </div>
