@@ -49,7 +49,6 @@ const Select = ({
     select = select.slice(0, 20) + "...";
   }
 
-  
   return (
     <div className={styles.root}>
       <div
@@ -65,9 +64,7 @@ const Select = ({
           className={clsx(styles.select, !options && styles.selectNotBorder)}
         >
           <p className={styles.title}>{select}</p>
-          <div className={styles.icons}>
-            <SelectArrowIcon />
-          </div>
+          <SelectArrowIcon />
         </div>
         {isOpen && (
           <ul

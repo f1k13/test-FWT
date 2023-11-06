@@ -49,6 +49,9 @@ const CardsList = () => {
       {((data as unknown as CardType)?.payload || []).map((item, index) => (
         <CardItem item={item} key={index} />
       ))}
+      {((data as unknown as CardType)?.payload || []).length === 0 && (
+        <p className={styles.textEmpty}>No data</p>
+      )}
     </div>
   );
 };

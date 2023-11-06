@@ -1,11 +1,11 @@
 import { RootState, UseAppDispatch } from "@/entities/redux/store";
-import styles from "../styles/pagination.module.scss";
+import styles from "./styles/pagination.module.scss";
 import { setCurrentPage } from "@/features/filters-panel/lib/slices/filters-slice";
-import { ArrowOneIcon, ArrowTwoIcon } from "../../icons";
+import { ArrowOneIcon, ArrowTwoIcon } from "../icons";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { generatePageCount } from "../lib/generate-page-counts";
+import { generatePageCount } from "./lib/generate-page-counts";
 import { itemsCountsFetch } from "@/widgets/cards-list/lib/service/cards-fetch";
 
 const Pagination = () => {

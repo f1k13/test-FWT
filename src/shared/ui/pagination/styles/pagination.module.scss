@@ -1,9 +1,8 @@
 .root {
   display: flex;
   margin-top: 40px;
-  border: 1px solid var(--item-background-color);
   border-radius: 10px;
-  width: 22%;
+  width: 100%;
 }
 
 .item {
@@ -41,7 +40,7 @@
   }
 
   &:disabled {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--text-input);
     &:hover {
       background-color: transparent;
       cursor: not-allowed;
@@ -62,7 +61,7 @@
   }
 
   &:disabled {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--text-input);
 
     &:hover {
       background-color: transparent;

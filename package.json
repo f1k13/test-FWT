@@ -13,7 +13,8 @@
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.0",
     "clsx": "^2.0.0",
-    "fwt-internship-uikit": "^1.0.2",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
@@ -23,6 +24,7 @@
     "saas": "^1.0.0"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.8",
     "@types/node": "^20.8.10",
     "@types/qs": "^6.9.9",
     "@types/react": "^18.2.15",

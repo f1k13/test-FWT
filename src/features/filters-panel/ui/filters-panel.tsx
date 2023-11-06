@@ -1,4 +1,3 @@
-import Select from "@/shared/ui/select/select";
 import styles from "../../../widgets/filters/styles/filters.module.scss";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,18 +7,17 @@ import {
   setCreatedBeforeValue,
   setCreatedFromValue,
   setLocation,
-  setSearch,
 } from "../lib/slices/filters-slice";
 import { fetchAuthors } from "../lib/service/authors-fetch";
 import { fetchLocation } from "../lib/service/location-fetch";
+import { Select } from "@/shared/ui/select";
+import Search from "./search-input";
 
 const SortingPanel = () => {
-
+  
   const [firstValue, setFirstValue] = useState<string>("");
 
   const [secondValue, setSecondValue] = useState<string>("");
-
-  const [searchValue, setSearchValue] = useState<string>("");
 
   const [isOpenAuthor, setIsOpenAuthor] = useState<boolean>(false);
 
@@ -31,13 +29,11 @@ const SortingPanel = () => {
     dispatch(fetchAuthors());
     dispatch(fetchLocation());
   }, []);
-  
 
   useEffect(() => {
     dispatch(setCreatedFromValue(firstValue));
     dispatch(setCreatedBeforeValue(secondValue));
-    dispatch(setSearch(searchValue));
-  }, [firstValue, secondValue, searchValue]);
+  }, [firstValue, secondValue]);
 
   const { authrorsItems } = useSelector((state: RootState) => state.authors);
 
@@ -56,13 +52,7 @@ const SortingPanel = () => {
   };
   return (
     <div className={styles.line}>
-      <input
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        className={styles.input}
-        type="text"
-        placeholder="Name"
-      />
+      <Search/>
       <Select
         select={author}
         options={authrorsItems}
