@@ -2,6 +2,7 @@
   "name": "framework-team-test",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://f1k13.github.io/test-FWT",
   "type": "module",
   "scripts": {
     "dev": "vite",
