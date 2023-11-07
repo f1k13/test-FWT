@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { SelectArrowIcon } from "../icons";
+import { CloseIcon, SelectArrowIcon } from "../icons";
 import styles from "./styles/select.module.scss";
 import clsx from "clsx";
 
@@ -21,7 +21,7 @@ const Select = ({
 }: {
   select: string;
   options?: options[];
-  onChange?: (value: string, id: number) => void;
+  onChange?: (value: string, id?: number) => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   valueInput?: string;
@@ -64,6 +64,9 @@ const Select = ({
           className={clsx(styles.select, !options && styles.selectNotBorder)}
         >
           <p className={styles.title}>{select}</p>
+          <div onClick={() => onChange?.(select)}>
+            <CloseIcon />
+          </div>
           <SelectArrowIcon />
         </div>
         {isOpen && (
