@@ -1,0 +1,90 @@
+.root {
+  display: flex;
+  margin-top: 40px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.item {
+  list-style-type: none;
+  border: 1px solid var(--item-background-color);
+  width: 41px;
+  height: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--item-background-color);
+
+  &:hover {
+    background-color: var(--hover-item-color);
+  }
+}
+
+.buttonPrev {
+  border: 1px solid var(--item-background-color);
+  background-color: transparent;
+  width: 41px;
+  height: 41px;
+  outline: none;
+  transform: rotate(180deg);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-item-color);
+  }
+
+  &:disabled {
+    border: 1px solid var(--text-input);
+    &:hover {
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.buttonNext {
+  border: 1px solid var(--item-background-color);
+  background-color: transparent;
+  width: 41px;
+  height: 41px;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-item-color);
+  }
+
+  &:disabled {
+    border: 1px solid var(--text-input);
+
+    &:hover {
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.buttonPrevBorder {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.buttonNextBorder {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.active {
+  background-color: var(--item-background-color);
+  color: var(--main-background-color);
+
+  &:hover {
+    background-color: var(--item-background-color);
+  }
+}
