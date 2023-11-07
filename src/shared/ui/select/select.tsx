@@ -5,8 +5,8 @@ import clsx from "clsx";
 
 type options = {
   id: number;
-  name: string;
-  location: string;
+  name?: string;
+  location?: string;
 };
 const Select = ({
   select,
@@ -21,7 +21,7 @@ const Select = ({
 }: {
   select: string;
   options?: options[];
-  onChange?: (value: string, id?: number) => void;
+  onChange?: (value: string, id: number) => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   valueInput?: string;
@@ -64,7 +64,7 @@ const Select = ({
           className={clsx(styles.select, !options && styles.selectNotBorder)}
         >
           <p className={styles.title}>{select}</p>
-          <div onClick={() => onChange?.(select)}>
+          <div onClick={() => onChange?.(select, 0)}>
             <CloseIcon />
           </div>
           <SelectArrowIcon />
@@ -75,11 +75,14 @@ const Select = ({
               isOpen === true ? styles.listIsActive : styles.listNotIsActive
             }
           >
-            {options?.map((option) => (
+            {options?.map((option?) => (
               <li
                 className={styles.item}
                 onClick={() =>
-                  onChange?.(option.name || option.location, option.id)
+                  onChange?.(
+                    option.name || "" || option.location || "",
+                    option.id
+                  )
                 }
                 key={option.id}
               >
