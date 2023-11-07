@@ -1,9 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchLocation } from "../service/location-fetch";
-import { FilterType } from "@/shared/types/filter-type";
+import { LocationType } from "../service/location-fetch";
+
 
 type LocationState = {
-  locationsItems: FilterType[];
+  locationsItems: LocationType[];
   status: "error" | "loading" | "success";
 };
 
@@ -23,7 +24,7 @@ export const locationSlice = createSlice({
       })
       .addCase(
         fetchLocation.fulfilled,
-        (state, action: PayloadAction<FilterType[]>) => {
+        (state, action: PayloadAction<LocationType[]>) => {
           state.status = "success";
           state.locationsItems = action.payload;
         }

@@ -1,8 +1,7 @@
 import { api } from "@/shared/api/api";
-import { FilterType } from "@/shared/types/filter-type";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-type LocationType = {
+export type LocationType = {
   id: number;
   location: string;
 };
@@ -10,7 +9,7 @@ type LocationType = {
 export const fetchLocation = createAsyncThunk(
   "locations/fetchLocations",
   async () => {
-    const { data } = await api.get<FilterType[]>("/locations");
+    const { data } = await api.get<LocationType[]>("/locations");
     return data as LocationType[];
   }
 );

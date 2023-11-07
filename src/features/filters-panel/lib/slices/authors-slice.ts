@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { fetchAuthors } from "../service/authors-fetch";
-import { FilterType } from "@/shared/types/filter-type";
+import { AuthorType, fetchAuthors } from "../service/authors-fetch";
 
 type AuthorsState = {
-  authrorsItems: FilterType[];
+  authrorsItems: AuthorType[];
   status: "error" | "loading" | "success";
 };
 
@@ -23,7 +22,7 @@ export const authorsSlice = createSlice({
       })
       .addCase(
         fetchAuthors.fulfilled,
-        (state, action: PayloadAction<FilterType[]>) => {
+        (state, action: PayloadAction<AuthorType[]>) => {
           state.status = "success";
           state.authrorsItems = action.payload;
         }
